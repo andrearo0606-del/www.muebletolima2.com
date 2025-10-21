@@ -1,0 +1,346 @@
+/* Variables de color */
+:root {
+    --color-primary: #782D3C; /* Rojo oscuro/Vino */
+    --color-secondary: #F8F8F8; /* Gris claro/Fondo general */
+    --color-text-dark: #333;
+    --color-text-light: #ffffff;
+    --color-accent: #ffffff; /* Tono dorado para acentos si se requiere */
+}
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-text-dark);
+    background-color: var(--color-secondary);
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin-top: 0;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+.encabezado {
+    /* Simulación del fondo tejido con superposición */
+    height: 70vh; /* Altura de la sección principal */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+.encabezado::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2); /* Oscurecimiento para que el texto resalte */
+    z-index: 0;
+}
+
+/* CONTENEDOR DEL VIDEO */
+.video_principal {
+    position: absolute; 
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    width: 100%; /* Ocupa el 100% del ancho del padre (.hero) */
+    height: 100%; /* Ocupa el 100% del alto del padre (.hero, que es 70vh) */
+    z-index: -1; 
+}
+
+.video_principal video {
+    /* CLAVE: Asegura que el contenido del video cubra el área sin estirarse */
+    object-fit: cover; 
+    min-width: 100%;
+    min-height: 100%;
+    
+    /* Centrado perfecto para asegurar la cobertura */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.nav {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.logo-img {
+    height: 60px; /* Ajusta el tamaño del logo */
+}
+
+.menu a {
+    margin-left: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 1.05rem;
+}
+
+.menu a:hover {
+    color: var(--color-accent);
+}
+
+.redes a {
+    margin-left: 20px;
+    font-size: 1.1rem;
+}
+
+.menu-boton{
+    display: none; /* Oculto en escritorio */
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    font-size: 1.8rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.encabezado-text {
+    position: relative;
+    margin-bottom: 10%;
+    padding: 0 20px;
+    z-index: 10;
+}
+
+
+.encabezado-text h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Sección de Productos */
+.productos-section {
+    padding: 0;
+}
+
+.titulo_producto {
+    background-color: var(--color-primary);
+    color: #fafafa;
+    padding: 15px 20px;
+    text-align: center;
+}
+
+.titulo_producto h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.titulo_producto p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+}
+
+.productos-general{
+    display: grid;
+    /* Configuración para 3 columnas en escritorio */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    color: #f8f8f8;
+}
+
+.product-category {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    background-color: #782D3C;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product-category img {
+    width: 100%;
+    height: 300px;   
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+.product-category h2 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 10px 0;
+   background-color: #782D3C;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+.product-category:hover img {
+    transform: scale(1.05);
+}
+
+/* Ajustes de tamaño para la imagen de Accesorios (más pequeña) */
+.product-category.accessories img {
+
+    height: auto; /* Permite que la imagen se ajuste a su contenido */
+    max-height: 400px; /* Limita la altura de la imagen */
+}
+/* Pie de Página (Footer) */
+.footer {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 50px 20px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.footer-column {
+    flex: 1;
+    text-align: left;
+}
+
+.footer-column h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: rgb(255, 255, 255);
+}
+/* Estilos para listas del footer (corregido en HTML) */
+.footer-column ul {
+    list-style: none; /* Elimina viñetas */
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.footer-column p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-column a {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+}
+
+.footer-column a:hover {
+    color: var(--color-accent);
+}
+
+/* Estilos Responsive */
+
+/* Tablet (768px y menos) */
+@media (max-width: 768px) {
+    .nav {
+        padding: 15px 20px;
+    }
+    
+   
+    .redes {
+        order: 3; /* Mover iconos sociales al final */
+        margin-left: 0;
+    }
+    .logo{
+        flex-grow: 1;
+    }
+
+    .menu-boton{
+        display: block; /* Mostrar botón de menú (hamburguesa) */
+        order: 2; /* Colocarlo cerca del logo */
+    }
+
+    .encabezado-text h1 {
+        font-size: 2rem;
+    }
+
+    .productos-general{
+        /* Configuración para 2 columnas en tablet */
+        grid-template-columns: repeat(2, 1fr);
+        margin: 30px auto;
+    }
+    .product-category img {
+        height: 250px; /* Reducir altura de imagen en tablet */
+    }
+    /* El ítem de Accesorios y Sillas quedarán bien con el ajuste a 2 columnas */
+
+    .footer-container {
+        flex-direction: column;
+        text-align: left;
+        gap: 15px;
+    }
+    
+    .footer-column {
+        margin-bottom: 20px;
+    }
+    
+    .footer-column h4 {
+        text-align: center;
+    }
+}
+
+/* Móvil (576px y menos) */
+@media (max-width: 576px) {
+    .encabezado{
+        height: 65vh;
+    }
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .logo, .redes, .menu-toggle {
+        flex: 1 1 100%; /* Ocupar todo el ancho y apilar */
+        text-align: center;
+    }
+
+    .logo {
+        order: 1;
+        flex-basis: a;
+    }
+    
+    .redes {
+        order: 3;
+        margin-top: 10px;
+    }
+
+    .menu-boton {
+        display: none; /* Se podría implementar un menú desplegable con JS, pero para el CSS básico, lo ocultamos */
+    }
+
+    .encabezado {
+        height: 60vh;
+    }
+    
+    .encabezado-text h1 {
+        font-size: 1.5rem;
+    }
+
+    .productos-general{
+        /* Configuración para 1 columna en móvil */
+        grid-template-columns: 1fr;
+    }
+}
+

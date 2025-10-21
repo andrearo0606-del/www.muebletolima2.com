@@ -1,0 +1,252 @@
+/* Variables de color */
+:root {
+    --color-primary: #782D3C; /* Rojo oscuro/Vino */
+    --color-secondary: #a84257; /* Fondo color piel/beige */
+    --color-text-dark:#ffffff;
+    --color-text-light: #FFF;
+}
+
+/* Estilos Generales */
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--color-text-dark);
+    background-color: var(--color-text-light);
+}
+
+h1, h3 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    color: #FFF;
+}
+
+/* Sección Superior: Título y Redes Sociales */
+.main-header {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    flex-grow: 1; /* Permite que el título ocupe el espacio central */
+    text-align: center;
+}
+
+.social-icons {
+    /* Agrupamos y movemos al borde izquierda */
+   display: flex;
+    font-size: 1.2rem;
+    margin-right: 20px;
+    position: absolute;
+    right: 40px;
+    gap: 15px;
+    
+}
+
+.social-icons a {
+    color: var(--color-text-light);
+}
+
+/* Barra de Navegación de Categorías */
+.category-nav {
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;    
+    background-color: antiquewhite;
+    padding: 15px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+       
+}
+.category-nav::before {  
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Color negro (0,0,0) con 30% de transparencia (0.3) */
+    background-color: rgba(255, 249, 249, 0.3); 
+    z-index: 0;
+}
+
+.category-list {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    overflow-x: auto; /* Permite desplazamiento horizontal en móviles */
+    padding: 0 10px;
+    scrollbar-width: none; /* Ocultar barra de scroll en Firefox */
+    
+}
+
+
+/* Ocultar barra de scroll en WebKit (Chrome, Safari) */
+.category-list::-webkit-scrollbar {
+    display: none;
+}
+.boton-inicio {
+    display: inline-block;
+    
+    color: black;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 16px;
+  }
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 5px 10px;
+    min-width: 80px; /* Asegura que cada ítem tenga un mínimo de ancho */
+    white-space: nowrap; /* Evita que el texto se rompa */
+    color: black;    
+}
+
+.category-item:hover {
+    opacity: 0.8;
+}
+
+.category-item .icon img {
+    height: 40px; /* Tamaño del icono */
+    margin-bottom: 5px;
+}
+
+.category-item .text {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* Galería de Productos por Material */
+.product-gallery {
+    display: grid;
+    /* 3 columnas por defecto para escritorio */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.product-card {
+    background-color: #782D3C;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.product-image {
+    width: 95%;
+    height: 500px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.03);
+}
+
+.product-material {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 15px 10px;
+    margin: 0;
+    color: var(--color-text-dark);
+    text-transform: uppercase;
+}
+
+/* --- Responsive Design --- */
+
+/* Tablet (hasta 992px) */
+@media (max-width: 992px) {
+    .main-header {
+        padding: 20px;
+    }
+
+    .main-header h1 {
+        font-size: 2rem;
+    }
+    .social-icons {
+        right: 20px; /* Mover iconos sociales al final */
+    }
+    
+      
+    .product-gallery {
+        /* 2 columnas en Tablet */
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 15px;
+    }
+
+    .product-image {
+        height: 30vh; /* Ajuste de altura en tablet */
+    }
+    
+    .category-list {
+        justify-content: flex-start; /* Alinear a la izquierda para desplazamiento */
+    }
+}
+
+/* Móvil (hasta 576px) */
+@media (max-width: 576px) {
+    .main-header {
+        flex-direction: column;
+        padding: 15px 10px;
+        position: relative;
+    }
+    .logo{
+        width: 100%;
+        text-align: center;
+    }
+    .main-header h1 {
+        font-size: 1.8rem;
+        order: 2; /* Colocar el título debajo de los iconos o al centro */
+    }
+
+    .social-icons {
+         position: static;
+         margin-bottom: 10px;
+         order: 1;
+         width: 100%;
+         justify-content: center;
+    }
+
+    .product-gallery {
+        /* 1 columna en Móvil */
+        grid-template-columns: 1fr;
+        gap: 15px;
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+    
+    .product-image {
+        height: 200px; /* Ajuste de altura en móvil */
+    }
+    
+    .category-list {
+        /* Asegurarse de que se puede desplazar horizontalmente */
+        justify-content: flex-start;
+        padding: 0 5px;
+        gap: 10px;
+    }
+
+    .category-item .text {
+        font-size: 0.8rem;
+    }
+}

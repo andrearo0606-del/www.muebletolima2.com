@@ -1,0 +1,270 @@
+/* VARIABLES y RESET BÁSICO */
+:root {
+    --color-marron: #6c2d2d; /* El color rojo/marrón del encabezado */
+    --color-marron-claro: #9d5a5a;
+    --color-texto: #333;
+    --color-fondo: #f9f9f9;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--color-texto);
+    background-color: var(--color-fondo);
+    line-height: 1.6;
+}
+
+/* ----------------------------------------------------- */
+/* --- ENCABEZADO SUPERIOR (AJUSTES CLAVE PARA MÓVIL) --- */
+/* ----------------------------------------------------- */
+.main-header {
+    background-color: var(--color-marron);
+    color: white;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea verticalmente los elementos */
+    gap: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo_img {
+    flex-shrink: 0; /* Evita que el logo se encoja */
+    display: flex;
+    align-items: center;
+}
+
+.main-header .logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    flex-grow: 1; /* Permite que el título ocupe el centro */
+    text-align: center;
+    margin: 0;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.2rem;
+    margin-left: 15px;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.social-icons a:hover {
+    opacity: 0.8;
+}
+
+.social-icons .boton-inicio {
+    background-color: var(--color-marron-claro);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: white;
+    text-transform: uppercase;
+}
+
+/* ----------------------------------------------------- */
+/* --- CONTENIDO PRINCIPAL (ESCRITORIO/TABLET GRANDE) --- */
+/* ----------------------------------------------------- */
+.container {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.content-section {
+    display: flex;
+    gap: 40px;
+    background-color: white; /* Agregado para delimitar el fondo de la sección */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* ÁREA DE TEXTO */
+.text-info {
+    flex: 1;
+    padding-top: 20px;
+}
+
+.intro-text {
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+    color: var(--color-marron);
+    border-bottom: 2px solid var(--color-marron);
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    display: inline-block;
+}
+
+/* TABLA DE ESPECIFICACIONES */
+.specs-table-container {
+    overflow-x: auto; /* CLAVE: Permite el desplazamiento horizontal en móvil */
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px; /* Ancho mínimo para forzar desplazamiento en móviles */
+    text-align: left;
+}
+
+th, td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+thead th {
+    background-color: var(--color-marron);
+    color: white;
+    font-weight: 700;
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* INFORMACIÓN ADICIONAL */
+.additional-info {
+    margin-top: 30px;
+}
+
+.delivery {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--color-marron);
+}
+
+.features {
+    font-style: italic;
+    color: #555;
+}
+
+/* ÁREA DE IMAGEN */
+.image-area {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center; /* Centra la imagen en su área */
+}
+
+/* ----------------------------------------------------- */
+/* --- MEDIA QUERIES (RESPONSIVE DESIGN) --- */
+/* ----------------------------------------------------- */
+
+/* Tablet (hasta 900px) - Apilamiento de contenido */
+@media (max-width: 900px) {
+    
+    .content-section {
+        flex-direction: column; /* Apila imagen y texto */
+        gap: 30px;
+        padding: 20px;
+    }
+    
+    .text-info, .image-area {
+        flex: none; 
+        width: 100%;
+    }
+
+    .image-area {
+        order: -1; /* CLAVE: La imagen va primero en el apilamiento */
+    }
+
+    .container {
+        margin-top: 20px;
+    }
+    
+    /* Ajustes menores para la tabla en tabletas */
+    table {
+        min-width: 100%; /* Permite que la tabla se estire al máximo en tabletas */
+    }
+    th, td {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
+
+    /* Mantiene la lógica del zoom si está en uso */
+    #img-magnified-view {
+        width: 250px;
+        height: 250px;
+        left: 50%; 
+        transform: translateX(-50%); 
+        top: calc(100% + 20px); 
+    }
+}
+
+/* Móvil (hasta 550px) - Ajustes finos y encabezado */
+@media (max-width: 550px) {
+    
+    /* CLAVE: Apilamiento y reordenamiento del encabezado en celular */
+    .main-header {
+        padding: 10px 15px;
+        flex-direction: column;
+        text-align: center;
+        gap: 5px;
+    }
+
+    .logo_img {
+        order: 1; /* Logo arriba */
+    }
+
+    .main-header .logo {
+        order: 2; /* Título en el medio */
+        margin-bottom: 5px;
+        font-size: 1.3rem;
+    }
+    
+    .social-icons {
+        order: 3; /* Iconos abajo */
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+    
+    .social-icons a {
+        margin-left: 0;
+        font-size: 1rem;
+    }
+    
+    .social-icons .boton-inicio {
+        padding: 3px 6px;
+        font-size: 0.75rem;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    /* Asegura el desplazamiento horizontal en la tabla para celulares muy pequeños */
+    table {
+        min-width: 400px; 
+    }
+
+    .intro-text {
+        font-size: 0.9rem;
+    }
+    
+    /* Oculta completamente el zoom en móviles muy pequeños */
+    .img-magnifier-lens, #img-magnified-view {
+        display: none !important; 
+    }
+}

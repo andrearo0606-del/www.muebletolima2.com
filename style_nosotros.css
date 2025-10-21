@@ -1,0 +1,193 @@
+/* Estilos Generales y Reseteo */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+/* ------------------- Encabezado ------------------- */
+.main-header {
+    background-color: #5d0f0f; /* Color marrón oscuro de la imagen */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    /* Para centrar el título y posicionar los íconos */
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+}
+
+.header-title {
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 5px;
+    margin: o auto;
+}
+
+.social-icons {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.2em;
+    margin-left: 15px;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.social-icons a:hover {
+    opacity: 0.8;
+}
+
+.social-icons .boton-inicio {
+    background-color: #782D3C; /* Color de acento para el botón */
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    margin-right: 5px;
+    color: white;
+    text-transform: uppercase;
+}
+.social-icons .boton-inicio:hover {
+    background-color: #a84257;
+}
+/* ------------------- Contenido Principal ------------------- */
+.content-container {
+    max-width: 1200px; /* Ancho máximo para el contenido en escritorio */
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.info-section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.info-section h2 {
+    font-size: 1.8em;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #5d0f0f; /* Color de acento */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Contenedor Flexbox/Grid para Responsividad */
+.content-wrapper {
+    display: grid;
+    /* Define la cuadrícula para dos columnas en pantallas grandes */
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px;
+    align-items: stretch; /* Alinea verticalmente los elementos */
+}
+
+.text-box {
+    padding: 20px;
+    background-color: #f5f5f5; /* Fondo más claro para el texto */
+    border-radius: 6px;
+    font-size: 0.95em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+}
+
+.text-box p {
+    margin-bottom: 15px;
+    text-align: justify;
+}
+.image-box img,
+.image-box video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 6px;
+    object-fit: cover; 
+}
+
+/* Estilos específicos para la sección Misión (orden alterno) */
+/* Historia y Visión: Texto a la izquierda, Imagen a la derecha (Orden normal HTML) */
+.historia .content-wrapper,
+.vision .content-wrapper {
+    grid-template-areas: "texto imagen";
+}
+
+/* Misión: Imagen a la izquierda, Texto a la derecha (Orden invertido en escritorio) */
+.mision .content-wrapper {
+    grid-template-areas: "imagen texto";
+}
+
+
+/* ------------------- Media Queries (Responsividad) ------------------- */
+
+/* Aplicar estilos para pantallas con ancho máximo de 768px (Móviles y Tablets) */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column; /* Apila el título y los íconos */
+        padding: 15px 10px 10px; /* Ajuste de padding inferior */
+    }
+    
+    .header-title {
+        font-size: 1.8em;
+        margin-bottom: 10px;
+        order: 1; /* Título primero */
+    }
+
+    .social-icons {
+        /* Mover los iconos abajo del título en móvil */
+        position: static;
+        transform: none;
+        margin-top: 0;
+        justify-content: center;
+        order: 2;
+    }
+
+    .social-icons a {
+        margin: 0 8px;
+    }
+    .social-icons .boton-inicio {
+        padding: 3px 8px;
+        font-size: 0.8em;
+    }
+
+    .content-container {
+        margin: 20px auto;
+        padding: 0 15px;
+    }
+.text-box {
+        padding: 15px;
+        font-size: 0.9em;
+    }
+    
+    /* Asegura que las imágenes y videos no sean demasiado altos en móvil */
+    .image-box img,
+    .image-box video {
+        height: auto;
+        max-height: 250px;
+    }
+    
+    /* Resetea los órdenes para todas las cajas para que el HTML prevalezca */
+    .historia .image-box, .historia .text-box,
+    .mision .image-box, .mision .text-box,
+    .vision .image-box, .vision .text-box {
+        order: initial !important; 
+    }
+}
